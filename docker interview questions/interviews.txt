@@ -1,0 +1,35 @@
+1. what is docker ?
+docker is an opensource containerization platform, it enables developers to package applications into containers.
+
+2. how containers are different from virtual machines ?
+
+3. what is Docker life cycle ?
+users would create a docker file with a set of instructions or commands that defines a docker image. for example which base image to choose, what dependencies should be installed for the application to run. Docker images act as set of instructions to build a docker container. It can be compared to snapsht in a vm.
+
+4. what are the different docker components ?
+ 
+5. what is the difference between docker COPY and docker ADD ?
+docker ADD can copy the files from a URL unlike docker COPY which can only copy files from host system into the container.
+
+6. what is the difference between CMD and ENTRYPOINT in docker ?
+CLI arguments using the docker run command will override the arguments specified using the CMD instruction.
+
+7. what are the networking types in docker and what is the default ?
+The default networking in docker is bridge.
+however you can change the default type and configure one among 1. Bridge 2. Overlay 3. Host 4. MacVlan
+
+8. can you explain how to isolate networking between containers ?
+
+9. what is a multi stage build in docker ?
+multi stage build allows you to build your docker container in multiple stages allowing you to copy artifacts from one stage to other. The major advantage of this is to build lightweight containers.
+
+10. what are distroless images in docker ?
+distroless images contain oonly your application and its runtime dependencies with a very minimum operating system libraries. They do not contain package managers, shells or any other programs you would expect to find in a standard Linux distribution. The are very small and lightweight images.
+
+11. Realtime challenges with docker ?
+docker is a single daemon process, which can cause a single point of failure. If the docker daemon goes down for some reason all the applications are down.
+docker daemon runs as a root user, which is a security threat. Any process running as root can have adverse effects. when it is compromised for security reasons, it can impact other applications or containers on the host.
+
+12. what steps would you take to secure containers ?
+use Distroless or images with not too many packages as your final image in multi stage build so that there is less chance of CVE or security issues.
+ensure that the networking is configured properly as this is one of the most common reasons for security issues.if required configure custom bridge networks and assign them to isolate containers.
