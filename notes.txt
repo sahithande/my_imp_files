@@ -1,0 +1,72 @@
+                                                                         kubernetes notes
+
+kubernetes architecture:
+
+kubernetes has something called control plane and data plane, both of them contain multiple components.
+
+control plane components:
+
+1. API server: it is the core component in control plane that does everything, it basically takes requests from the external world. for suppose a user is trying to create a pod, trying to access the API server so then the API server will decide ok the particular worker node is free but to schedule the component on the worker node, you have a component in kubernetes called scheduler which actually actions upon the requests given by API server.
+2. etcd: it is like a backup store(key, value), entire kubernetes cluster information is stored as objects(key-value pairs) inside the etcd.
+3. scheduler: schedules the requests given by API server.
+4. controller manager: it ensures that all the controllers are always running, example of a controller is replicaset. Controller manager is like a manager for all the controllers.
+5. cloud controller manager: 
+
+data plane components:
+1. kubelet: it is responsible for maintaining your pod(i.e ensuring that the pod is always running), if something is going wrong with the pod, then it immediately informs API server to action upon it.
+2. kubeproxy: it provides networking(every pod that u create should have an ip address, kubeproxy provides load balancing capabilities as well).
+3. container-runtime: it is actually responsible for running the container inside the pod.
+
+
+* RBAC: it is directly related to security, it can be broadly divided into two categories i.e users and service accounts.
+RBAC in kubernetes is a concept that basically does user management, i.e what access has to be given to the users on the cluster, is decided by the roles that the user has. service account is a concept that lets what access does the application running inside a pod has on other resources inside the cluster(i.e api server, config maps, secrets.)
+kubernetes does not do the user management, it offloads the user management to the identity providers.
+Role is basically a yaml file, where you will define what all the permissions should be granted.
+Role binding is something that you use to assign a role onto the user, or onto the service account.
+
+* config maps & secrets:
+config maps is solving the problem of storing the information(date) that can be used by your application at later point of time.
+secrets is solving the problem of storing sensitive data that can be used by your application at later point of time.(it does encryption at rest and also supports custom encryption.)
+configs maps is for non sensitive data, secrets is for sensitive data.
+
+interview questions:
+
+1. what is the ideal pod size or the pod count ?
+A. It depends upon the number of concurrent users, and the number of users or requests that one replica of your application can handle. ie. if one replica of ur application can handle 10 requests, and the no of concurrent users are 100, then you must create 10 pods.
+
+2. How does service does a service discovery ?
+A. svc does service discovery using labels and selectors.
+
+3. service can also expose your application to the external world.
+
+4. what is the difference between docker and kubernetes ?
+A. docker is a container platform whereas kubernetes is a container orchestration environment that offers capabilities like Auto healing, Auto scaling, clustering and Enterprise level support like load balancing.
+
+5. what are the main components of the kubernetes architecture ?
+A. control plane and data plane.
+
+6. what are the main differences between docker swarm and kubernetes ?
+A. kubernetes is better suited for large organizations as it offers more scalability, networking capabilities like policies and huge third party eco-system support.
+
+7. what is the difference between docker container and kubernetes pod ?
+A. A pod in kubernetes is a runtime specification of a container in docker, a pod provides more declarative way of defining using YAML and you can run more than one container in a pod.
+
+8. what is a namespace in kubernetes ?
+A. In kubernetes namespace is a logical isolation of resources, network policies, rbac and everything. For example there are two projects using the same k8s cluster. One project can use ns1 and the other project can use ns2 without any overlap and authentication problems.
+
+9. what is the role of kube-proxy ?
+A. kube-proxy works by maintaining a set of network rules on each node in the cluster, which are updated dynamically as services are added or removed. when a client sends a request to a service, the request is intercepted by kube-proxy on the node where it was received.  kube-proxy then looks up the destination endpoint for the service and routes the request accordingly. kubernetes is an essential component of a kubernetes cluster, as it ensures that services can communicate with each other.
+
+10. what are the different types of services in kubernetes ?
+A. There are three different types of services that a user can create which are 1. cluster ip mode 2. nodeport mode 3. loadbalancer mode
+
+11. what is the difference between nodeport and loadbalancer type service ?
+A. when a service is created of a nodeport type, the kube-proxy updates the ip tables with node ipaddress and port that is chosen in the service configuration to access the pods.
+whereas if you create a service as loadbalancer type, the cloud control manager(CCM) creates a external load balancer ip using the underlying cloud provider logic in CCM. users can access the services using the external ip.
+
+12. what is the role of kubelet ?
+A. kubelet manages the containers that are scheduled to run on that node. it ensures that the containers are running and healthy and that the resources they need are available. kubelet communicates with the kubernetes API server to get information about the containers that should be running on the node, and then starts and stops the containers as needed to maintain the desired state. it also monitors the containers to ensure that they are running correctly, and restarts them if necessary.
+
+ 
+
+
