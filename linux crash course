@@ -1,0 +1,102 @@
+all linux commands:
+
+1.  ls --> The ls command is used to list files and directories in the current directory. It provides a simple overview of the contents.
+2.  mkdir --> The mkdir command is used to create a new directory in a file system.
+3.  ls -l --> The ls -l command is used to list files and directories in a detailed (long) format, providing information such as permissions, owner, group, size, and modification time.
+4.  pwd --> The pwd command is used to print the current working directory.
+5.  touch --> The touch command is used to create an empty file
+6.  clear --> The clear command is used to clear the terminal screen
+7.  rm --> The rm command is used to remove/delete files.
+8.  rm -r or rm -rf --> The rm -r command is used to remove directories and their contents recursively in a single line.
+9.  rmdir --> The rmdir command is used to remove an empty directory in a single line.
+10. cat --> The cat command is used to concatenate and display the contents of files
+11. echo --> The echo command is used to display text or output to the terminal
+12. head, head -n 5 XXfilenameXX --> The head command is used to display the first few lines of a file 
+13. tail, tail -f XXfilenameXX, tail -n XXfilenameXX --> The tail command is used to display the last few lines of a file 
+14. cp --> The cp command is used to copy files or directories
+15. less --> The less command is used to view the contents of a file interactively, allowing scrolling, searching, and navigation 
+16. more --> The more command is used to display the contents of a file one screen at a time 
+17. cp -r --> The cp -r command is used to recursively copy directories and their contents
+18. mv --> The mv command is used to move or rename files and directories
+19. wc --> The wc command is used to display the count of lines, words, and characters in a file or input stream 
+20. soft link ln -s path-to-original-file  dest-as-in-where-a-soft-link-has-been-created --> A soft link, or symbolic link, is a file that serves as a reference to another file or directory through an absolute or relative path, creating a separate pointer to the target location.
+21. hard link ln path-to-original-file dest-as-in-where-a-hard-link-has-been-created --> A hard link in Linux is a reference to a file that shares the same inode as another file, enabling multiple filenames to refer to the same data on disk.
+22. cut -b XXspecify the byte numberXX XXfilenameXX --> The cut command is used to extract specific columns or fields from text files or input streams 
+23. tee --> The tee command is used to read from standard input and write to both standard output and files, effectively splitting the data stream in a single line
+24. sort --> The sort command is used to arrange lines of text or data in ascending or descending order
+25. diff --> The diff command is used to compare and display the differences between two text files
+26. vim --> Vim is a highly configurable text editor designed for efficient text editing
+27. ssh --> "ssh" is a command-line utility used to establish a secure, encrypted connection to a remote server or device over a network.
+28. df -h --> The df -h command is used to display information about disk space usage, showing the sizes of file systems in a human-readable format
+29. du -h --> The du -h command is used to estimate and display the disk space usage of files and directories in a human-readable format 
+30. kill --> 
+31. free -h --> The free -h command is used to display the amount of free and used memory in the system, presented in a human-readable format
+32. kill -9 pid --> 
+33. nohup --> nohup is a command used to run a process immune to hangups (HUP signals), allowing it to continue running even after the user logs out
+34. vmstat --> The vmstat command is used to display virtual memory statistics, including information about system processes, memory, paging, block I/O, and CPU usage
+
+
+system level commands:
+
+35. uname --> "uname" prints system information such as the kernel name, node name, kernel release, kernel version, machine hardware name, processor type, hardware platform, and the operating system.
+36. date --> "date" displays the current date and time.
+37. uptime --> "uptime" shows system uptime and load averages.
+38. whoami --> "whoami" displays the current username.
+39. which --> "which" locates the executable file associated with a given command.
+40. id --> The id command in Linux is typically used to display user and group information
+41. sudo --> The sudo command in Linux is used to execute commands with elevated privileges. It allows a permitted user to execute a command as the superuser or another user
+42. sudo 
+43. shutdown --> This command will shutdown the system
+44. reboot --> This command will reboot the system
+45. apt, yum, dbf, pacman --. he apt command in Linux is a powerful package management tool used primarily in Debian-based distributions such as Ubuntu
+
+
+user and group management commands:
+
+46. useradd -m username (to create a user and a home directory)
+47. passwd username -->  the passwd command is used to change or update a user's password. 
+48. userdel username --> to delete a user
+49. groupadd groupname --> to add a group
+50. cat /etc/passwd --> to list all the users in the account
+51. cat /etc/group(or)getent group --> to list all the active groups
+52. sudo gpasswd -a username groupname --> to add a user to a group
+53. sudo gpasswd -M(capital) username1,username2,username3 groupname --> to add multiple users at a time to a group
+54. sudo groupdel groupname --> to delete a group
+
+
+file permission commands:
+
+55. umask
+56. chmod
+57. ls -l
+58. chown
+59. chgrp --> to change the group ownership for a file or directory
+
+
+compression commands:
+
+60. zip -r XXzip-file-nameXX XXfolder-and-contents-which-u-want-to-compressXX(tar is also used for same purpose that is to compress using given zip format)
+61. unzip XXzip-fileXX --> to decompress it
+62. tar -czvf XXarchive-file.tar.gzXX XXfolderXX --> to create a compressed archive using gzip
+63. tar -xzvf XXarvcive-fileXX --> to docompress and extract 
+64. scp (copy files)
+65. rsync
+
+networking commands:
+
+66. ping
+67. ifconfig
+68. traceroute google.com or traceroute youtube.com
+69. mtr google.com
+70. nslookup google.com
+71. telnet google.com 80
+72. hostname
+73. curl
+74. wget
+
+
+pro linux commands:
+
+75. awk 
+76. sed
+77. grep
